@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  /* FONT SYSTEM */
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* COLOR SYSTEM AI ADVANCED */
+  --color-ai-primary: #6366f1;
+  --color-ai-secondary: #8b5cf6;
+  --color-ai-accent: #22d3ee;
+  --color-ai-neon: #00f5ff;
+  --color-ai-pink: #ec4899;
+
+  /* SURFACE & BRAND (Digunakan di Navbar kamu) */
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-dark: #0b1120;
+  --color-surface-light: #f8fafc;
+  --color-surface-dark: #0b1120;
+  --color-surface-glass: rgba(255, 255, 255, 0.05);
+  --color-surface-card-dark: #0f172a;
+
+  /* BORDER & TEXT */
+  --color-border-light: #e2e8f0;
+  --color-border-dark: #1e293b;
+  --color-text-light: #0f172a;
+  --color-text-dark: #f1f5f9;
+
+  /* ANIMASI */
+  --animate-muncul-halus: munculHalus 0.8s ease-out forwards;
+  --animate-mengambang: mengambang 6s ease-in-out infinite;
+  --animate-blur-in: blur-in 0.3s ease-out;
+
+  @keyframes munculHalus {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes mengambang {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+  @keyframes blur-in {
+    from { opacity: 0; filter: blur(10px); }
+    to { opacity: 1; filter: blur(0); }
+  }
+}
+
+/* WAJIB: Supaya Toggle dark mode di Navbar.tsx kamu berfungsi */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    /* Default (Light Mode) */
+    @apply bg-white text-text-light;
+  }
+  
+  .dark body {
+    /* Gunakan Hitam Pekat (#000000) atau #050505 agar tidak biru */
+    background-color: #000000; 
+    @apply text-text-dark;
+  }
+}
