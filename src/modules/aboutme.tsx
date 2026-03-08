@@ -54,6 +54,7 @@ const AboutMe = () => {
 
   return (
     <section
+      id="about"
       data-aos="fade-up"
       className="relative min-h-screen overflow-hidden bg-white text-neutral-900 transition-colors duration-500 dark:bg-[#050509] dark:text-neutral-100"
     > 

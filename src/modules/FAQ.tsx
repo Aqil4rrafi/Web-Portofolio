@@ -11,6 +11,49 @@ interface FAQItemProps {
   answer: string;
 }
 
+const FAQ_DATA = [
+  {
+    question: "Is Rafi single? (Most frequently asked)",
+    answer: "Currently available. If you're planning to confess, the floor is yours!",
+  },
+  {
+    question: "Why Electrical Engineering at UGM?",
+    answer: "To be honest? It was the final destination after a long, exhausting battle with Medical School entrance exams.",
+  },
+  {
+    question: "Where was Rafi born?",
+    answer: "The City of Heroes, Surabaya.",
+  },
+  {
+    question: "When is Rafi's birthday?",
+    answer: "November 7th. Mark your calendar, surprises are highly appreciated!",
+  },
+  {
+    question: "Who is the most handsome guy in the world?",
+    answer: "Well, definitely not Rafi. Let's keep it realistic.",
+  },
+  {
+    question: "Who is Aqila Kresna Arrafi?",
+    answer: "A curious Electrical Engineering student at Universitas Gadjah Mada who enjoys building things, solving problems, and turning ideas into real projects.",
+  },
+  {
+    question: "What does Aqila enjoy working on?",
+    answer: "Mostly projects related to engineering, technology, and creative development. I enjoy experimenting with new tools, building systems, and learning how things actually work.",
+  },
+  {
+    question: "What kind of projects does Aqila like?",
+    answer: "Projects that combine engineering and problem solving — especially systems, electronics, and innovative solutions that can make something work better or more efficiently.",
+  },
+  {
+    question: "What motivates Aqila to keep learning?",
+    answer: "Curiosity. There is always something new to understand, build, or improve. That constant challenge is what makes learning exciting.",
+  },
+  {
+    question: "What is Aqila's goal for the future?",
+    answer: "To become an engineer who can create impactful technology, contribute to meaningful projects, and keep growing both technically and personally.",
+  },
+];
+
 function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +65,6 @@ function FAQItem({ question, answer }: FAQItemProps) {
       <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 opacity-60 group-hover:opacity-100 blur-[2px] transition duration-500"></div>
 
       <div className="relative bg-white dark:bg-[#07070c] border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden">
-
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="w-full flex justify-between items-center px-6 py-5 text-left
@@ -70,13 +112,11 @@ const FAQ = () => {
       data-aos="fade-up"
       className="relative min-h-screen bg-white dark:bg-[#050509] overflow-hidden transition-colors"
     >
-        <div className="absolute top-[30%] -left-[10%] w-[700px] h-[700px] rounded-full bg-indigo-300/40 dark:bg-indigo-600/20 blur-[180px]" />
-        <div className="absolute bottom-[10%] -right-[10%] w-[700px] h-[700px] rounded-full bg-purple-300/40 dark:bg-purple-700/20 blur-[180px]" />
-
+      <div className="absolute top-[30%] -left-[10%] w-[700px] h-[700px] rounded-full bg-indigo-300/40 dark:bg-indigo-600/20 blur-[180px]" />
+      <div className="absolute bottom-[10%] -right-[10%] w-[700px] h-[700px] rounded-full bg-purple-300/40 dark:bg-purple-700/20 blur-[180px]" />
 
       <DefaultLayout>
         <div className="relative max-w-7xl mx-auto px-6">
-
           <div data-aos="fade-right" className="mb-12">
             <p className="text-sm tracking-[0.35em] uppercase text-zinc-500 mb-3">
               Questions
@@ -90,57 +130,13 @@ const FAQ = () => {
           </div>
 
           <div className="space-y-4">
-
-            <FAQItem
-              question="Is Rafi single? (Most frequently asked)"
-              answer="Currently available. If you're planning to confess, the floor is yours!"
-            />
-
-            <FAQItem
-              question="Why Electrical Engineering at UGM?"
-              answer="To be honest? It was the final destination after a long, exhausting battle with Medical School entrance exams."
-            />
-
-            <FAQItem
-              question="Where was Rafi born?"
-              answer="The City of Heroes, Surabaya."
-            />
-
-            <FAQItem
-              question="When is Rafi's birthday?"
-              answer="November 7th. Mark your calendar, surprises are highly appreciated!"
-            />
-
-            <FAQItem
-              question="Who is the most handsome guy in the world?"
-              answer="Well, definitely not Rafi. Let's keep it realistic."
-            />
-
-            <FAQItem
-              question="Who is Aqila Kresna Arrafi?"
-              answer="A curious Electrical Engineering student at Universitas Gadjah Mada who enjoys building things, solving problems, and turning ideas into real projects."
-            />
-
-            <FAQItem
-              question="What does Aqila enjoy working on?"
-              answer="Mostly projects related to engineering, technology, and creative development. I enjoy experimenting with new tools, building systems, and learning how things actually work."
-            />
-
-            <FAQItem
-              question="What kind of projects does Aqila like?"
-              answer="Projects that combine engineering and problem solving — especially systems, electronics, and innovative solutions that can make something work better or more efficiently."
-            />
-
-            <FAQItem
-              question="What motivates Aqila to keep learning?"
-              answer="Curiosity. There is always something new to understand, build, or improve. That constant challenge is what makes learning exciting."
-            />
-
-            <FAQItem
-              question="What is Aqila's goal for the future?"
-              answer="To become an engineer who can create impactful technology, contribute to meaningful projects, and keep growing both technically and personally."
-            />
-
+            {FAQ_DATA.map((item, index) => (
+              <FAQItem
+                key={index}
+                question={item.question}
+                answer={item.answer}
+              />
+            ))}
           </div>
         </div>
       </DefaultLayout>
