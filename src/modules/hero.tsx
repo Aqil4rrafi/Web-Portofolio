@@ -13,18 +13,22 @@ const skills = [
   "React / Next.js",
   "TypeScript",
   "Tailwind CSS",
-  "Python / AI",
+  "Python",
   "TensorFlow",
   "PyTorch",
   "UI / UX Design",
   "Node.js",
+  "App Building",
+  "C++ / Qt",
+  "PCB Design",
+  "Teaching Math",
 ];
 
 const Skills = () => {
   return (
-    <div className="relative z-10 mt-32 w-full max-w-7xl mx-auto" data-aos="fade-up">
+    <div className="relative z-10 mt-16 md:mt-32 w-full max-w-7xl mx-auto" data-aos="fade-up">
       
-      <div className="flex items-center gap-6 mb-14">
+      <div className="flex items-center gap-6 mb-15">
 
         <h3 className="text-2xl md:text-4xl font-semibold text-gray-900 dark:text-white">
           Technical{" "}
@@ -101,7 +105,7 @@ const Hero = () => {
 
       <DefaultLayout>
 
-        <div id="hero" className="relative z-10 w-full py-24">
+        <div id="hero" className="relative z-10 w-full pt-6 md:py-24">
 
           <div className="w-full max-w-7xl mx-auto flex flex-col-reverse md:grid md:grid-cols-4 gap-12 items-center">
 

@@ -24,7 +24,6 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
 
-          {/* CTA */}
           <div className="md:col-span-6 space-y-6">
 
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
@@ -59,7 +58,6 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Navigation */}
           <div className="md:col-span-3 space-y-4">
 
             <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
@@ -94,7 +92,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Socials */}
           <div className="md:col-span-3 space-y-4">
 
             <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
@@ -132,7 +129,6 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom bar */}
         <div
           className="
           flex flex-col md:flex-row
