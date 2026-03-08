@@ -63,7 +63,7 @@ const AboutMe = () => {
 
 
       <DefaultLayout>
-        <div className="mx-auto max-w-7xl px-6 py-24">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
 
             <div

@@ -159,7 +159,7 @@ const Hero = () => {
                   </Button>
                 </Link>
 
-                <Link href="#about">
+                <Link href="#project">
                   <Button
                     variant="white"
                     className="h-auto rounded-xl border border-gray-300 dark:border-white/15 text-gray-700 dark:text-zinc-200 text-sm font-medium hover:border-purple-500 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition"
