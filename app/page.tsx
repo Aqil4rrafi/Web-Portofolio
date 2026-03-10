@@ -3,6 +3,7 @@ import AboutMe from "@/src/modules/aboutme";
 import Project from "@/src/modules/projects";
 import FAQ from "@/src/modules/FAQ";
 import Contact from "@/src/modules/contact";
+import ChatbotSection from "@/src/modules/chatbotSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
     <Project />
     <FAQ />
     <Contact />
+    <ChatbotSection />
     </>
   );
 };

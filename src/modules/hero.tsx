@@ -105,7 +105,7 @@ const Hero = () => {
 
       <DefaultLayout>
 
-        <div id="hero" className="relative z-10 w-full pt-6 md:py-24">
+        <div id="hero" className="relative z-10 w-full pt-20 md:py-24">
 
           <div className="w-full max-w-7xl mx-auto flex flex-col-reverse md:grid md:grid-cols-4 gap-12 items-center">
 
