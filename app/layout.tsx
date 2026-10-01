@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import Navbar from "../src/components/elements/navbar";
-import Footer from "../src/components/elements/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bodyFont = Source_Sans_3({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const displayFont = Source_Serif_4({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Web Aqila",
-  description: "Semoga dapat menginformasikan siapa aku",
+  title: "Aqila Kresna Arrafi — Digital CV",
+  description:
+    "Front-end and machine learning developer exploring software, intelligent systems, and embedded technology.",
 };
 
 export default function RootLayout({
@@ -27,11 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bodyFont.variable} ${displayFont.variable} antialiased`}
       >
-        <Navbar/>
         {children}
-        <Footer/>
       </body>
     </html>
   );
