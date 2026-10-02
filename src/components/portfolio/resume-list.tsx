@@ -12,7 +12,7 @@ export function ResumeList({ entries, anchorPrefix }: ResumeListProps) {
         <article
           className="resume-entry"
           id={resumeAnchor(anchorPrefix, entry)}
-          key={entry.title}
+          key={entry.id}
         >
           <div className="entry-meta">
             <time>{entry.period}</time>

@@ -82,11 +82,11 @@ export function PortfolioSearch({
             {query ? `${results.length} matching results` : "Browse sections"}
           </p>
           {results.length > 0 ? (
-            results.map((item, index) => (
+            results.map((item) => (
               <button
                 type="button"
                 className="search-result"
-                key={`${item.category}-${item.label}-${index}`}
+                key={item.id}
                 onClick={() => onNavigate(item.href)}
               >
                 <span className="search-result-type">{item.category}</span>

@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { portfolio, toAnchor } from "@/src/data/portfolio";
+import { portfolio } from "@/src/data/portfolio";
 import { SectionHeading } from "./section-heading";
 
 export function Achievements() {
@@ -12,7 +12,7 @@ export function Achievements() {
       />
       <div className="achievement-list">
         {portfolio.achievements.map((item) => (
-          <article id={"achievement-" + toAnchor(item.title)} key={item.title}>
+          <article id={"achievement-" + item.id} key={item.id}>
             <time>{item.year}</time>
             <div>
               <p>{item.issuer}</p>

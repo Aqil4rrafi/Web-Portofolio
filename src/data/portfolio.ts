@@ -4,6 +4,7 @@ export type SocialLink = {
 };
 
 export type ResumeEntry = {
+  id: string;
   title: string;
   organization: string;
   period: string;
@@ -14,6 +15,7 @@ export type ResumeEntry = {
 };
 
 export type Project = {
+  id: string;
   name: string;
   description: string;
   highlights: string[];
@@ -27,12 +29,14 @@ export type Project = {
 };
 
 export type SkillGroup = {
+  id: string;
   category: string;
   items: string[];
   note?: string;
 };
 
 export type Achievement = {
+  id: string;
   title: string;
   issuer: string;
   year: string;
@@ -41,6 +45,7 @@ export type Achievement = {
 };
 
 export type SearchRecord = {
+  id: string;
   category:
     | "Section"
     | "Experience"
@@ -62,7 +67,7 @@ export function toAnchor(value: string) {
 }
 
 export function resumeAnchor(prefix: "experience" | "education", entry: ResumeEntry) {
-  return `${prefix}-${toAnchor(`${entry.title}-${entry.organization}`)}`;
+  return `${prefix}-${entry.id}`;
 }
 
 export const navigation = [
@@ -109,6 +114,7 @@ export const portfolio = {
   },
   experience: [
     {
+      id: "radian-mathematics-teacher-2025",
       title: "Mathematics Teacher",
       organization: "Radian Edu Solution Yogyakarta",
       period: "August 2025 — Present",
@@ -120,6 +126,7 @@ export const portfolio = {
       ],
     },
     {
+      id: "pionir-it-2026",
       title: "Staff of IT",
       organization: "PIONIR Gadjah Mada 2026",
       period: "March 2026 — August 2026",
@@ -133,6 +140,7 @@ export const portfolio = {
       skills: ["Next.js", "Tailwind CSS", "WebGL", "Three.js"],
     },
     {
+      id: "technocorner-frontend-2026",
       title: "Staff of Front-End Developer",
       organization: "Website Development Technocorner 2026",
       period: "December 2025 — July 2026",
@@ -145,6 +153,7 @@ export const portfolio = {
       skills: ["Next.js", "Tailwind CSS", "Responsive Web Development"],
     },
     {
+      id: "nesco-frontend-2026",
       title: "Staff of Front-End Developer",
       organization: "Website Development NESCO 2026",
       period: "December 2025 — June 2026",
@@ -159,6 +168,7 @@ export const portfolio = {
   ] satisfies ResumeEntry[],
   projects: [
     {
+      id: "ai-posture-monitor-2026",
       name: "Real-Time AI Posture Monitor",
       year: "September 2026",
       description:
@@ -175,6 +185,7 @@ export const portfolio = {
       featured: true,
     },
     {
+      id: "alzheimers-mil-classification-2026",
       name: "Alzheimer's Disease Classification Using Multiple Instance Learning",
       year: "July 2026",
       description:
@@ -190,6 +201,7 @@ export const portfolio = {
       featured: true,
     },
     {
+      id: "personal-portfolio-2025",
       name: "Personal Portfolio Website",
       year: "November 2025",
       description:
@@ -205,6 +217,7 @@ export const portfolio = {
       linkLabel: "Visit website",
     },
     {
+      id: "robotics-electronics-intern-2025",
       name: "Electronic Team Intern",
       organization: "Gadjah Mada Robotic Team",
       year: "November 2025",
@@ -219,6 +232,7 @@ export const portfolio = {
       image: "/PCBDesign.jpeg",
     },
     {
+      id: "smartwatch-wellness-journey-2024",
       name: "Smartwatch Guardian with WellnessJourney",
       year: "June 2024",
       description:
@@ -233,12 +247,14 @@ export const portfolio = {
   ] satisfies Project[],
   education: [
     {
+      id: "ugm-electrical-engineering-2025",
       title: "Bachelor of Electrical Engineering",
       organization: "Universitas Gadjah Mada",
       period: "August 2025 — Present",
       location: "Yogyakarta, Indonesia",
     },
     {
+      id: "lia-toefl-preparation-2023",
       title: "LIA Preparation Course for TOEFL Test",
       organization: "LIA",
       period: "August 2023 — August 2024",
@@ -248,10 +264,12 @@ export const portfolio = {
   ] satisfies ResumeEntry[],
   skills: [
     {
+      id: "ai-machine-learning",
       category: "AI & Machine Learning",
       items: ["Machine Learning", "Deep Learning", "Large Language Models", "PyTorch"],
     },
     {
+      id: "web-development",
       category: "Web Development",
       items: [
         "Next.js",
@@ -261,9 +279,10 @@ export const portfolio = {
         "Full-Stack Web Development",
       ],
     },
-    { category: "Electronics", items: ["PCB Design", "KiCad"] },
-    { category: "Design", items: ["Figma", "Canva", "PicsArt"] },
+    { id: "electronics", category: "Electronics", items: ["PCB Design", "KiCad"] },
+    { id: "design", category: "Design", items: ["Figma", "Canva", "PicsArt"] },
     {
+      id: "additional-technical-skills",
       category: "Additional Technical Skills",
       items: [
         "Computer Vision",
@@ -275,22 +294,26 @@ export const portfolio = {
       ],
     },
     {
+      id: "soft-skills",
       category: "Soft Skills",
       items: ["Public Speaking", "Leadership", "Event Management"],
       note: "Led a 20-member team with 150+ participants.",
     },
     {
+      id: "languages",
       category: "Languages",
       items: ["Indonesian — Native", "English — TOEFL Prediction Score 503 · LIA Certificate"],
     },
   ] satisfies SkillGroup[],
   achievements: [
     {
+      id: "paragon-scholarship-2025",
       title: "Grantee of Paragon Scholarship",
       issuer: "Paragon Technology and Innovation",
       year: "November 2025",
     },
     {
+      id: "islamic-youth-festival-dai-third-place-2023",
       title: "3rd Winner — Da'i Competition Islamic Youth Festival",
       issuer: "STT Nurul Fikri Jakarta",
       year: "December 2023",
@@ -300,6 +323,7 @@ export const portfolio = {
 
 export const searchRecords: SearchRecord[] = [
   ...navigation.map((item) => ({
+    id: `section-${item.href.slice(1)}`,
     category: "Section" as const,
     label: item.label,
     detail: `Go to ${item.label}`,
@@ -307,6 +331,7 @@ export const searchRecords: SearchRecord[] = [
     keywords: item.label,
   })),
   ...portfolio.experience.map((item) => ({
+    id: `experience-${item.id}`,
     category: "Experience" as const,
     label: item.title,
     detail: item.organization,
@@ -323,10 +348,11 @@ export const searchRecords: SearchRecord[] = [
       .join(" "),
   })),
   ...portfolio.projects.map((item) => ({
+    id: `project-${item.id}`,
     category: "Project" as const,
     label: item.name,
     detail: item.organization ?? item.stack.join(" · "),
-    href: `#project-${toAnchor(item.name)}`,
+    href: `#project-${item.id}`,
     keywords: [
       item.name,
       item.organization,
@@ -340,14 +366,16 @@ export const searchRecords: SearchRecord[] = [
   })),
   ...portfolio.skills.flatMap((group) =>
     group.items.map((skill) => ({
+      id: `skill-${group.id}-${toAnchor(skill)}`,
       category: "Skill" as const,
       label: skill,
       detail: group.category,
-      href: `#skill-${toAnchor(group.category)}-${toAnchor(skill)}`,
+      href: `#skill-${group.id}-${toAnchor(skill)}`,
       keywords: `${skill} ${group.category} ${group.note ?? ""}`,
     })),
   ),
   ...portfolio.education.map((item) => ({
+    id: `education-${item.id}`,
     category: "Education" as const,
     label: item.title,
     detail: item.organization,
@@ -357,10 +385,11 @@ export const searchRecords: SearchRecord[] = [
       .join(" "),
   })),
   ...portfolio.achievements.map((item) => ({
+    id: `achievement-${item.id}`,
     category: "Achievement" as const,
     label: item.title,
     detail: item.issuer,
-    href: `#achievement-${toAnchor(item.title)}`,
+    href: `#achievement-${item.id}`,
     keywords: `${item.title} ${item.issuer} ${item.year}`,
   })),
 ];

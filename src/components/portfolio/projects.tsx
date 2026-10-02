@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { portfolio, toAnchor, type Project } from "@/src/data/portfolio";
+import { portfolio, type Project } from "@/src/data/portfolio";
 import { SectionHeading } from "./section-heading";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -19,7 +19,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
       className={`project-card ${project.featured ? "project-featured" : ""} ${project.image ? "" : "project-no-image"}`}
-      id={"project-" + toAnchor(project.name)}
+      id={"project-" + project.id}
     >
       {project.image && (
         project.projectUrl ? (
@@ -69,7 +69,7 @@ export function Projects() {
       />
       <div className="projects-grid">
         {portfolio.projects.map((project, index) => (
-          <ProjectCard key={project.name} project={project} index={index} />
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
     </section>

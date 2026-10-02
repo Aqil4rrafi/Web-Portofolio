@@ -38,7 +38,7 @@ body {
   overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-kerning: normal;
   font-feature-settings: "kern" 1, "liga" 1;
   text-rendering: optimizeLegibility;
@@ -46,7 +46,7 @@ body {
 
 body.search-is-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
+button, input, textarea, select { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 ::selection { background: var(--primary); color: var(--on-primary); }
@@ -224,7 +224,7 @@ kbd {
 
 .hero h1, .section-heading h2, .contact-section h2,
 .entry-content h3, .project-body h3, .achievement-list h3, .skill-group h3 {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display);
   font-optical-sizing: auto;
 }
 .hero h1 { max-width: 760px; margin: .8rem 0 0; font-size: clamp(3.5rem, 6vw, 5.75rem); font-weight: 500; letter-spacing: -.038em; line-height: .98; }
@@ -309,12 +309,13 @@ kbd {
 .project-body { display: flex; flex-direction: column; align-items: flex-start; padding-top: 1.25rem; }
 .project-featured .project-body { padding-top: 0; }
 .project-no-image .project-body { padding-top: 0; }
-.project-body h3 { font-size: clamp(1.5rem, 2vw, 1.9rem); }
+.project-body h3 { font-size: clamp(1.45rem, 1.8vw, 1.75rem); }
 .project-meta { width: 100%; display: flex; justify-content: space-between; }
 .project-meta span:only-child { margin-left: auto; }
-.project-highlights { margin: 1.05rem 0 0; padding: 0; list-style: none; }
-.project-highlights li { position: relative; margin-top: .42rem; padding-left: 1rem; color: var(--muted); font-size: .86rem; line-height: 1.58; }
-.project-highlights li::before { content: "—"; position: absolute; left: 0; color: var(--primary); }
+.project-highlights { margin: 1.05rem 0 0; padding-left: 1.05rem; list-style: disc; }
+.project-highlights li { margin: 0; padding-left: .16rem; color: var(--muted); font-size: .88rem; line-height: 1.62; }
+.project-highlights li + li { margin-top: .48rem; }
+.project-highlights li::marker { color: var(--primary); font-size: .78em; }
 .project-links { display: flex; gap: 1rem; margin-top: 1.35rem; }
 .project-links a, .contact-socials a { display: inline-flex; align-items: center; gap: .4rem; padding-bottom: .2rem; border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 650; }
 .project-links a { color: var(--primary-deep); }
@@ -413,7 +414,7 @@ kbd {
   .mobile-drawer { position: fixed; z-index: 55; top: 59px; right: 0; width: min(86vw, 340px); height: calc(100dvh - 59px); display: block; padding: 24px 18px; border-left: 1px solid rgb(255 255 255 / .16); background: linear-gradient(180deg, var(--primary-deep), var(--primary-navy)); color: var(--on-primary); transform: translateX(102%); transition: transform 220ms ease; }
   .mobile-drawer.is-open { transform: translateX(0); }
   .mobile-drawer-heading { padding-bottom: 22px; border-bottom: 1px solid rgb(255 255 255 / .18); }
-  .mobile-drawer-heading p { margin: 0; font-family: var(--font-display), serif; font-size: 1.8rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.15; }
+  .mobile-drawer-heading p { margin: 0; font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.15; }
   .mobile-drawer-heading span { display: block; margin-top: 4px; color: rgb(255 255 255 / .66); font-size: 11px; }
   .mobile-drawer nav { padding-top: 15px; }
   .mobile-drawer nav a { display: grid; grid-template-columns: 33px 1fr; align-items: center; min-height: 48px; border-bottom: 1px solid rgb(255 255 255 / .15); color: rgb(255 255 255 / .7); font-size: 14px; }

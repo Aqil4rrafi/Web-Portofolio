@@ -11,12 +11,12 @@ export function Skills() {
       />
       <div className="skills-grid">
         {portfolio.skills.map((group) => (
-          <div className="skill-group" key={group.category}>
+          <div className="skill-group" key={group.id}>
             <h3>{group.category}</h3>
             <ul>
               {group.items.map((skill) => (
                 <li
-                  id={"skill-" + toAnchor(group.category) + "-" + toAnchor(skill)}
+                  id={"skill-" + group.id + "-" + toAnchor(skill)}
                   key={skill}
                 >
                   {skill}
