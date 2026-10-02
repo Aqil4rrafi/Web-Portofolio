@@ -17,7 +17,7 @@ export function Achievements() {
             <div>
               <p>{item.issuer}</p>
               <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              {item.description && <p>{item.description}</p>}
             </div>
             {item.credentialUrl && (
               <a

@@ -7,8 +7,8 @@ export type ResumeEntry = {
   title: string;
   organization: string;
   period: string;
-  location: string;
-  description: string;
+  location?: string;
+  description?: string;
   highlights?: string[];
   skills?: string[];
 };
@@ -16,17 +16,38 @@ export type ResumeEntry = {
 export type Project = {
   name: string;
   description: string;
+  highlights: string[];
   stack: string[];
-  role: string;
   year: string;
-  image: string;
-  projectUrl: string;
-  linkLabel: string;
+  organization?: string;
+  image?: string;
+  projectUrl?: string;
+  linkLabel?: string;
   featured?: boolean;
 };
 
+export type SkillGroup = {
+  category: string;
+  items: string[];
+  note?: string;
+};
+
+export type Achievement = {
+  title: string;
+  issuer: string;
+  year: string;
+  description?: string;
+  credentialUrl?: string;
+};
+
 export type SearchRecord = {
-  category: "Section" | "Experience" | "Project" | "Skill" | "Achievement";
+  category:
+    | "Section"
+    | "Experience"
+    | "Project"
+    | "Skill"
+    | "Education"
+    | "Achievement";
   label: string;
   detail: string;
   href: string;
@@ -38,6 +59,10 @@ export function toAnchor(value: string) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+}
+
+export function resumeAnchor(prefix: "experience" | "education", entry: ResumeEntry) {
+  return `${prefix}-${toAnchor(`${entry.title}-${entry.organization}`)}`;
 }
 
 export const navigation = [
@@ -54,132 +79,223 @@ export const portfolio = {
   profile: {
     name: "Aqila Kresna Arrafi",
     initials: "AK",
-    shortRole: "Frontend & ML Developer",
-    role: "Front-End & Machine Learning Developer",
+    shortRole: "Electrical Engineering Student",
+    role: "Electrical Engineering Student",
     introduction:
-      "Electrical Engineering student building clear digital interfaces, intelligent systems, and practical tools across software and hardware.",
+      "Electrical Engineering student at Universitas Gadjah Mada exploring IoT, AI, and intelligent systems, with an interest in technology for sustainable innovation.",
     location: "Yogyakarta, Indonesia",
+    residence: "Darmaputra Santren UGM Residence",
+    phone: "0887433061958",
     email: "arrafikresna@gmail.com",
-    availability: "Open to internships and collaborations",
+    website: "https://aqilakresnaarrafi.vercel.app/",
+    availability: "IoT & AI Enthusiast",
     image: "/Aqila.jpeg",
     socials: [
-      { label: "GitHub", url: "https://github.com/Aqil4rrafi" },
       {
         label: "LinkedIn",
         url: "https://www.linkedin.com/in/aqila-kresna-arrafi-75344933b",
       },
-      { label: "Instagram", url: "https://instagram.com/kresnarrafi" },
+      { label: "Website", url: "https://aqilakresnaarrafi.vercel.app/" },
     ] satisfies SocialLink[],
   },
   about: {
-    statement: "I turn curiosity into systems that are useful, considered, and built to last.",
+    statement: "Exploring IoT and AI for meaningful, sustainable innovation.",
     paragraphs: [
-      "I am an Electrical Engineering student at Universitas Gadjah Mada with a growing practice across front-end development, machine learning, and embedded systems.",
-      "My work is shaped by persistence and a bias toward making. I enjoy moving from an ambiguous problem to a structured solution—whether that means designing an interface, training a model, or prototyping a circuit.",
+      "I am a second-year Electrical Engineering student at Universitas Gadjah Mada with a strong interest in IoT and AI development.",
+      "I was awarded the Paragon Scholarship 2025 for academic excellence and potential in leadership and community impact. My experience spans technology development, teaching, event organization, and collaborative projects.",
+      "I am passionate about leveraging technology for sustainable innovation, with a long-term goal of contributing to Indonesia's net-zero emission efforts.",
     ],
-    focus: ["Interface engineering", "Applied machine learning", "Embedded systems"],
+    focus: ["IoT & AI development", "Technology & teaching", "Sustainable innovation"],
   },
   experience: [
     {
-      title: "Frontend & Machine Learning Developer",
-      organization: "Independent Projects",
-      period: "2025 — Present",
-      location: "Yogyakarta",
+      title: "Mathematics Teacher",
+      organization: "Radian Edu Solution Yogyakarta",
+      period: "August 2025 — Present",
       description:
-        "Designing and developing project-based solutions that connect modern web interfaces with practical engineering and machine-learning workflows.",
+        "Delivered mathematics instruction from elementary to senior high school levels, including intensive UTBK preparation in Pengetahuan Kuantitatif and Penalaran Matematika.",
       highlights: [
-        "Built responsive products from interface concept through implementation.",
-        "Explored model development, data workflows, and human-centered product decisions.",
+        "Designed 5+ structured lesson plans and syllabi tailored to the curriculum.",
+        "Created tailored exercises and practice materials to reinforce student understanding.",
       ],
-      skills: ["Next.js", "TypeScript", "Python"],
     },
     {
-      title: "Technology & Learning Contributor",
-      organization: "Student Initiatives",
-      period: "2024 — Present",
-      location: "Indonesia",
+      title: "Staff of IT",
+      organization: "PIONIR Gadjah Mada 2026",
+      period: "March 2026 — August 2026",
       description:
-        "Supporting collaborative learning through technical projects, peer discussion, and knowledge-sharing activities.",
+        "Translated design mockups into responsive web interfaces using Next.js and Tailwind CSS.",
       highlights: [
-        "Translated technical topics into approachable explanations and working demonstrations.",
+        "Optimized web applications for performance, scalability, and cross-browser compatibility.",
+        "Collaborated with backend teams to integrate frontend components with server-side logic and APIs.",
+        "Developed interactive 3D web applications and games using WebGL and Three.js.",
       ],
-      skills: ["Communication", "Teaching", "Teamwork"],
+      skills: ["Next.js", "Tailwind CSS", "WebGL", "Three.js"],
+    },
+    {
+      title: "Staff of Front-End Developer",
+      organization: "Website Development Technocorner 2026",
+      period: "December 2025 — July 2026",
+      description:
+        "Translated design mockups into responsive interfaces using Next.js and Tailwind CSS.",
+      highlights: [
+        "Optimized applications for performance, scalability, and cross-browser compatibility.",
+        "Collaborated with backend developers to integrate frontend components with APIs and server-side logic.",
+      ],
+      skills: ["Next.js", "Tailwind CSS", "Responsive Web Development"],
+    },
+    {
+      title: "Staff of Front-End Developer",
+      organization: "Website Development NESCO 2026",
+      period: "December 2025 — June 2026",
+      description:
+        "Translated design mockups into responsive interfaces using Next.js and Tailwind CSS.",
+      highlights: [
+        "Optimized applications for performance, scalability, and cross-browser compatibility.",
+        "Collaborated with backend developers to integrate frontend components with APIs and server-side logic.",
+      ],
+      skills: ["Next.js", "Tailwind CSS", "Responsive Web Development"],
     },
   ] satisfies ResumeEntry[],
   projects: [
     {
-      name: "Web Portfolio",
+      name: "Real-Time AI Posture Monitor",
+      year: "September 2026",
       description:
-        "A personal digital space that brings together selected work, technical direction, and an evolving engineering practice in one focused experience.",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-      role: "Design & Development",
-      year: "2026",
-      image: "/web.png",
-      projectUrl: "https://aqilas-web-portofolio.vercel.app/",
-      linkLabel: "Live site",
+        "Real-time computer vision application for monitoring and evaluating sitting posture using YOLO11 Pose.",
+      highlights: [
+        "Developed a real-time AI posture monitoring application using YOLO11 Pose and webcam-based computer vision.",
+        "Tracked shoulder tilt, head displacement, and torso inclination.",
+        "Designed a posture scoring system from 0–100 with GOOD, FAIR, and BAD classifications.",
+        "Implemented personalized posture calibration and Exponential Moving Average smoothing.",
+        "Added continuous bad-posture detection and real-time corrective recommendations.",
+        "Generated JSON session analytics including average posture score, posture distribution, bad-posture duration, and detected posture issues.",
+      ],
+      stack: ["YOLO11 Pose", "Computer Vision", "Python"],
       featured: true,
     },
     {
-      name: "Library Space",
+      name: "Alzheimer's Disease Classification Using Multiple Instance Learning",
+      year: "July 2026",
       description:
-        "A desktop library booking application that makes room and resource reservations simpler for students.",
-      stack: ["C++", "Qt UI"],
-      role: "Application Development",
-      year: "2025",
-      image: "/LibSpace.png",
-      projectUrl:
-        "https://github.com/qlaqilaa/Project-Pemrograman-Dasar-62765-62767-64101",
-      linkLabel: "Repository",
+        "Deep learning system for classifying Alzheimer's disease stages from brain MRI scans using Multiple Instance Learning.",
+      highlights: [
+        "Selected as a UGM contingent representative in Data Mining for GEMASTIK 2026 after securing 3rd place in UGM's internal selection.",
+        "Developed a deep learning model for Alzheimer's disease classification from brain MRI images using Multiple Instance Learning.",
+        "Implemented a ResNet18-based feature extractor.",
+        "Trained the model to classify multiple stages of dementia from MRI scan bags.",
+        "Used a Kaggle brain MRI dataset with image augmentation using Roboflow.",
+      ],
+      stack: ["Deep Learning", "Multiple Instance Learning", "ResNet18", "PyTorch", "Roboflow"],
+      featured: true,
     },
     {
-      name: "ESP32 PCB System",
+      name: "Personal Portfolio Website",
+      year: "November 2025",
       description:
-        "A compact circuit-board exploration for an ESP32-based system, developed from schematic decisions through board layout.",
-      stack: ["KiCad", "ESP32", "PCB Design"],
-      role: "Hardware Design",
-      year: "2025",
+        "Responsive personal portfolio built to showcase projects, skills, and technical interests.",
+      highlights: [
+        "Built a responsive personal portfolio using Next.js and Tailwind CSS.",
+        "Developed a simple interactive AI system based on Large Language Models using PyTorch.",
+        "Deployed the website publicly to improve online visibility and personal branding.",
+      ],
+      stack: ["Next.js", "Tailwind CSS", "PyTorch", "LLM"],
+      image: "/web.png",
+      projectUrl: "https://aqilakresnaarrafi.vercel.app/",
+      linkLabel: "Visit website",
+    },
+    {
+      name: "Electronic Team Intern",
+      organization: "Gadjah Mada Robotic Team",
+      year: "November 2025",
+      description:
+        "PCB fabrication and electrical system development for robotic applications.",
+      highlights: [
+        "Designed PCB layouts using KiCad.",
+        "Performed manual PCB fabrication using heat transfer, drilling, and assembly.",
+        "Executed wiring and electrical connections for robotic systems.",
+      ],
+      stack: ["KiCad", "PCB Design", "Electronics"],
       image: "/PCBDesign.jpeg",
-      projectUrl:
-        "https://drive.google.com/drive/folders/1rCzU5xTsz1v-kUhwy_7cSlPHWet1tFgn",
-      linkLabel: "Project files",
+    },
+    {
+      name: "Smartwatch Guardian with WellnessJourney",
+      year: "June 2024",
+      description:
+        "Smartwatch and digital wellness concept designed to help protect Generation Z from hypertension.",
+      highlights: [
+        "Developed the concept of a smartwatch prototype for monitoring blood pressure, sleep quality, and physical activity.",
+        "Built a digital prototype with 3+ health-monitoring features.",
+        "Designed an application prototype featuring an interactive Wellness Quest ecosystem to encourage long-term user engagement.",
+      ],
+      stack: ["Product Design", "Health Technology", "UI/UX"],
     },
   ] satisfies Project[],
   education: [
     {
       title: "Bachelor of Electrical Engineering",
       organization: "Universitas Gadjah Mada",
-      period: "2025 — Present",
+      period: "August 2025 — Present",
       location: "Yogyakarta, Indonesia",
+    },
+    {
+      title: "LIA Preparation Course for TOEFL Test",
+      organization: "LIA",
+      period: "August 2023 — August 2024",
       description:
-        "Studying electrical engineering fundamentals while developing a cross-disciplinary focus in software, artificial intelligence, and embedded technology.",
+        "Completed a one-year TOEFL preparation course covering listening, structure, reading, and writing.",
     },
   ] satisfies ResumeEntry[],
   skills: [
-    { category: "Programming", items: ["TypeScript", "Python", "C++"] },
-    { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
-    { category: "AI & Data", items: ["TensorFlow", "PyTorch", "Data analysis"] },
-    { category: "Hardware", items: ["ESP32", "Arduino", "PCB design"] },
-    { category: "Design", items: ["Figma", "UI / UX", "Prototyping"] },
-    { category: "Workflow", items: ["Git", "Linux", "Visual Studio Code"] },
-  ],
+    {
+      category: "AI & Machine Learning",
+      items: ["Machine Learning", "Deep Learning", "Large Language Models", "PyTorch"],
+    },
+    {
+      category: "Web Development",
+      items: [
+        "Next.js",
+        "Tailwind CSS",
+        "Payload CMS",
+        "Responsive Web Development",
+        "Full-Stack Web Development",
+      ],
+    },
+    { category: "Electronics", items: ["PCB Design", "KiCad"] },
+    { category: "Design", items: ["Figma", "Canva", "PicsArt"] },
+    {
+      category: "Additional Technical Skills",
+      items: [
+        "Computer Vision",
+        "YOLO Pose",
+        "Multiple Instance Learning",
+        "ResNet18",
+        "WebGL",
+        "Three.js",
+      ],
+    },
+    {
+      category: "Soft Skills",
+      items: ["Public Speaking", "Leadership", "Event Management"],
+      note: "Led a 20-member team with 150+ participants.",
+    },
+    {
+      category: "Languages",
+      items: ["Indonesian — Native", "English — TOEFL Prediction Score 503 · LIA Certificate"],
+    },
+  ] satisfies SkillGroup[],
   achievements: [
     {
-      title: "Paragon Scholarship Recipient",
-      issuer: "ParagonCorp",
-      year: "2025",
-      description:
-        "Selected for a development program supporting students with strong initiative, resilience, and community involvement.",
-      credentialUrl: "",
+      title: "Grantee of Paragon Scholarship",
+      issuer: "Paragon Technology and Innovation",
+      year: "November 2025",
     },
     {
-      title: "Engineering Project Showcase",
-      issuer: "Academic Project",
-      year: "2025",
-      description:
-        "Presented an integrated software and hardware project with an emphasis on clear implementation and collaborative delivery.",
-      credentialUrl: "",
+      title: "3rd Winner — Da'i Competition Islamic Youth Festival",
+      issuer: "STT Nurul Fikri Jakarta",
+      year: "December 2023",
     },
-  ],
+  ] as Achievement[],
 };
 
 export const searchRecords: SearchRecord[] = [
@@ -194,15 +310,33 @@ export const searchRecords: SearchRecord[] = [
     category: "Experience" as const,
     label: item.title,
     detail: item.organization,
-    href: `#experience-${toAnchor(item.title)}`,
-    keywords: `${item.title} ${item.organization} ${item.skills?.join(" ") ?? ""}`,
+    href: `#${resumeAnchor("experience", item)}`,
+    keywords: [
+      item.title,
+      item.organization,
+      item.period,
+      item.description,
+      item.highlights?.join(" "),
+      item.skills?.join(" "),
+    ]
+      .filter(Boolean)
+      .join(" "),
   })),
   ...portfolio.projects.map((item) => ({
     category: "Project" as const,
     label: item.name,
-    detail: item.stack.join(" · "),
+    detail: item.organization ?? item.stack.join(" · "),
     href: `#project-${toAnchor(item.name)}`,
-    keywords: `${item.name} ${item.description} ${item.stack.join(" ")}`,
+    keywords: [
+      item.name,
+      item.organization,
+      item.year,
+      item.description,
+      item.highlights.join(" "),
+      item.stack.join(" "),
+    ]
+      .filter(Boolean)
+      .join(" "),
   })),
   ...portfolio.skills.flatMap((group) =>
     group.items.map((skill) => ({
@@ -210,14 +344,23 @@ export const searchRecords: SearchRecord[] = [
       label: skill,
       detail: group.category,
       href: `#skill-${toAnchor(group.category)}-${toAnchor(skill)}`,
-      keywords: `${skill} ${group.category}`,
+      keywords: `${skill} ${group.category} ${group.note ?? ""}`,
     })),
   ),
+  ...portfolio.education.map((item) => ({
+    category: "Education" as const,
+    label: item.title,
+    detail: item.organization,
+    href: `#${resumeAnchor("education", item)}`,
+    keywords: [item.title, item.organization, item.period, item.location, item.description]
+      .filter(Boolean)
+      .join(" "),
+  })),
   ...portfolio.achievements.map((item) => ({
     category: "Achievement" as const,
     label: item.title,
     detail: item.issuer,
     href: `#achievement-${toAnchor(item.title)}`,
-    keywords: `${item.title} ${item.issuer} ${item.description}`,
+    keywords: `${item.title} ${item.issuer} ${item.year}`,
   })),
 ];

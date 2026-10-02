@@ -1,4 +1,4 @@
-import { type ResumeEntry, toAnchor } from "@/src/data/portfolio";
+import { resumeAnchor, type ResumeEntry } from "@/src/data/portfolio";
 
 type ResumeListProps = {
   entries: ResumeEntry[];
@@ -11,17 +11,17 @@ export function ResumeList({ entries, anchorPrefix }: ResumeListProps) {
       {entries.map((entry) => (
         <article
           className="resume-entry"
-          id={anchorPrefix + "-" + toAnchor(entry.title)}
+          id={resumeAnchor(anchorPrefix, entry)}
           key={entry.title}
         >
           <div className="entry-meta">
             <time>{entry.period}</time>
-            <span>{entry.location}</span>
+            {entry.location && <span>{entry.location}</span>}
           </div>
           <div className="entry-content">
             <p className="entry-org">{entry.organization}</p>
             <h3>{entry.title}</h3>
-            <p>{entry.description}</p>
+            {entry.description && <p>{entry.description}</p>}
             {entry.highlights && (
               <ul>{entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
             )}
