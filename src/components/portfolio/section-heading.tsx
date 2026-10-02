@@ -1,17 +1,13 @@
 type SectionHeadingProps = {
   index: string;
   eyebrow: string;
-  title: string;
 };
 
-export function SectionHeading({ index, eyebrow, title }: SectionHeadingProps) {
+export function SectionHeading({ index, eyebrow }: SectionHeadingProps) {
   return (
     <header className="section-heading">
-      <div className="section-kicker">
-        <span>{index}</span>
-        <span>{eyebrow}</span>
-      </div>
-      <h2>{title}</h2>
+      <span>{index}</span>
+      <h2>{eyebrow}</h2>
     </header>
   );
 }

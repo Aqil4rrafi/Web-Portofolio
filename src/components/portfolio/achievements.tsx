@@ -7,16 +7,15 @@ export function Achievements() {
     <section className="portfolio-section" id="achievements">
       <SectionHeading
         index="06"
-        eyebrow="Recognition"
-        title="Achievements, certifications, and programs."
+        eyebrow="Achievements"
       />
       <div className="achievement-list">
         {portfolio.achievements.map((item) => (
           <article id={"achievement-" + item.id} key={item.id}>
             <time>{item.year}</time>
             <div>
-              <p>{item.issuer}</p>
               <h3>{item.title}</h3>
+              <p className="achievement-issuer">{item.issuer}</p>
               {item.description && <p>{item.description}</p>}
             </div>
             {item.credentialUrl && (

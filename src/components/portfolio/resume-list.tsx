@@ -6,6 +6,8 @@ type ResumeListProps = {
 };
 
 export function ResumeList({ entries, anchorPrefix }: ResumeListProps) {
+  const isEducation = anchorPrefix === "education";
+
   return (
     <div className="resume-list">
       {entries.map((entry) => (
@@ -14,13 +16,17 @@ export function ResumeList({ entries, anchorPrefix }: ResumeListProps) {
           id={resumeAnchor(anchorPrefix, entry)}
           key={entry.id}
         >
-          <div className="entry-meta">
-            <time>{entry.period}</time>
-            {entry.location && <span>{entry.location}</span>}
-          </div>
           <div className="entry-content">
-            <p className="entry-org">{entry.organization}</p>
-            <h3>{entry.title}</h3>
+            <div className="entry-heading">
+              <div>
+                <h3>{isEducation ? entry.organization : entry.title}</h3>
+                <p className="entry-org">{isEducation ? entry.title : entry.organization}</p>
+              </div>
+              <div className="entry-meta">
+                <time>{entry.period}</time>
+                {entry.location && <span>{entry.location}</span>}
+              </div>
+            </div>
             {entry.description && <p>{entry.description}</p>}
             {entry.highlights && (
               <ul>{entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>

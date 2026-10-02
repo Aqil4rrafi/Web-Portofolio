@@ -6,8 +6,7 @@ export function Skills() {
     <section className="portfolio-section" id="skills">
       <SectionHeading
         index="05"
-        eyebrow="Capabilities"
-        title="Tools, technologies, and working knowledge."
+        eyebrow="Skills"
       />
       <div className="skills-grid">
         {portfolio.skills.map((group) => (

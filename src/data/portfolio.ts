@@ -66,7 +66,10 @@ export function toAnchor(value: string) {
     .replace(/(^-|-$)/g, "");
 }
 
-export function resumeAnchor(prefix: "experience" | "education", entry: ResumeEntry) {
+export function resumeAnchor(
+  prefix: "experience" | "education",
+  entry: ResumeEntry,
+) {
   return `${prefix}-${entry.id}`;
 }
 
@@ -110,9 +113,26 @@ export const portfolio = {
       "I was awarded the Paragon Scholarship 2025 for academic excellence and potential in leadership and community impact. My experience spans technology development, teaching, event organization, and collaborative projects.",
       "I am passionate about leveraging technology for sustainable innovation, with a long-term goal of contributing to Indonesia's net-zero emission efforts.",
     ],
-    focus: ["IoT & AI development", "Technology & teaching", "Sustainable innovation"],
+    focus: [
+      "IoT & AI development",
+      "Technology & teaching",
+      "Sustainable innovation",
+    ],
   },
   experience: [
+    {
+      id: "subcoordinator-it-tekfer-2026",
+      title: "Subcoordinator of IT Teknik Fair 2026",
+      organization: "Fakultas Teknik Universitas Gadjah Mada",
+      period: "August 2026 — Present",
+      description:
+        "Coordinate the IT subdivision in developing the Teknik Fair 2026 event platform, covering the landing page, participant dashboard, and administrative dashboard.",
+      highlights: [
+        "Lead task delegation and progress monitoring across UI/UX and Front-End Development, including design-system implementation, component development, and weekly technical reviews.",
+        "Define the end-to-end registration flow, including Google OAuth authentication, participant data validation, ticket selection, payment status tracking, QR-based attendance, and email delivery.",
+        "Collaborate with event leadership and other divisions to translate operational requirements into technical specifications, development priorities, and implementation timelines.",
+      ],
+    },
     {
       id: "radian-mathematics-teacher-2025",
       title: "Mathematics Teacher",
@@ -183,6 +203,8 @@ export const portfolio = {
       ],
       stack: ["YOLO11 Pose", "Computer Vision", "Python"],
       featured: true,
+      projectUrl: "https://github.com/Aqil4rrafi/computer-vision",
+      linkLabel: "View on GitHub",
     },
     {
       id: "alzheimers-mil-classification-2026",
@@ -197,7 +219,13 @@ export const portfolio = {
         "Trained the model to classify multiple stages of dementia from MRI scan bags.",
         "Used a Kaggle brain MRI dataset with image augmentation using Roboflow.",
       ],
-      stack: ["Deep Learning", "Multiple Instance Learning", "ResNet18", "PyTorch", "Roboflow"],
+      stack: [
+        "Deep Learning",
+        "Multiple Instance Learning",
+        "ResNet18",
+        "PyTorch",
+        "Roboflow",
+      ],
       featured: true,
     },
     {
@@ -266,7 +294,12 @@ export const portfolio = {
     {
       id: "ai-machine-learning",
       category: "AI & Machine Learning",
-      items: ["Machine Learning", "Deep Learning", "Large Language Models", "PyTorch"],
+      items: [
+        "Machine Learning",
+        "Deep Learning",
+        "Large Language Models",
+        "PyTorch",
+      ],
     },
     {
       id: "web-development",
@@ -274,12 +307,15 @@ export const portfolio = {
       items: [
         "Next.js",
         "Tailwind CSS",
-        "Payload CMS",
-        "Responsive Web Development",
+        "Web-based Games",
         "Full-Stack Web Development",
       ],
     },
-    { id: "electronics", category: "Electronics", items: ["PCB Design", "KiCad"] },
+    {
+      id: "electronics",
+      category: "Electronics",
+      items: ["PCB Design", "KiCad"],
+    },
     { id: "design", category: "Design", items: ["Figma", "Canva", "PicsArt"] },
     {
       id: "additional-technical-skills",
@@ -302,7 +338,10 @@ export const portfolio = {
     {
       id: "languages",
       category: "Languages",
-      items: ["Indonesian — Native", "English — TOEFL Prediction Score 503 · LIA Certificate"],
+      items: [
+        "Indonesian — Native",
+        "English — TOEFL Prediction Score 503 · LIA Certificate",
+      ],
     },
   ] satisfies SkillGroup[],
   achievements: [
@@ -380,7 +419,13 @@ export const searchRecords: SearchRecord[] = [
     label: item.title,
     detail: item.organization,
     href: `#${resumeAnchor("education", item)}`,
-    keywords: [item.title, item.organization, item.period, item.location, item.description]
+    keywords: [
+      item.title,
+      item.organization,
+      item.period,
+      item.location,
+      item.description,
+    ]
       .filter(Boolean)
       .join(" "),
   })),

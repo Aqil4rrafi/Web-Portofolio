@@ -8,7 +8,6 @@ export function Experience() {
       <SectionHeading
         index="02"
         eyebrow="Experience"
-        title="Selected roles and professional contributions."
       />
       <ResumeList entries={portfolio.experience} anchorPrefix="experience" />
     </section>

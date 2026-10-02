@@ -8,7 +8,6 @@ export function Education() {
       <SectionHeading
         index="04"
         eyebrow="Education"
-        title="Academic background and continued learning."
       />
       <ResumeList entries={portfolio.education} anchorPrefix="education" />
     </section>
