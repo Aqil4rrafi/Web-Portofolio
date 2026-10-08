@@ -8,10 +8,17 @@ import { Footer } from "@/src/components/portfolio/footer";
 import { Introduction } from "@/src/components/portfolio/introduction";
 import { Projects } from "@/src/components/portfolio/projects";
 import { Skills } from "@/src/components/portfolio/skills";
+import { profileStructuredData } from "@/src/data/seo";
 
 export default function Home() {
   return (
     <PortfolioShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(profileStructuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <Introduction />
       <div className="portfolio-content">
         <About />

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { portfolio, WEBSITE_URL } from "@/src/data/portfolio";
+import { siteDescription, siteTitle } from "@/src/data/seo";
 import "./globals.css";
 
 const bodyFont = Source_Sans_3({
@@ -13,14 +15,25 @@ const displayFont = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aqila-kresna-arrafi-portfolio.arrafikresna.chatgpt.site"),
-  title: "Aqila Kresna Arrafi — Digital CV",
-  description:
-    "Electrical Engineering student at Universitas Gadjah Mada exploring IoT, AI, and technology for sustainable innovation.",
+  metadataBase: new URL(WEBSITE_URL),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: { canonical: WEBSITE_URL },
+  authors: [{ name: portfolio.profile.name, url: WEBSITE_URL }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
-    title: "Aqila Kresna Arrafi — Digital CV",
-    description:
-      "Electrical Engineering student at Universitas Gadjah Mada exploring IoT, AI, and technology for sustainable innovation.",
+    title: siteTitle,
+    description: siteDescription,
+    url: WEBSITE_URL,
+    siteName: portfolio.profile.name,
+    locale: "en_US",
     type: "website",
     images: [
       {
@@ -33,9 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aqila Kresna Arrafi — Digital CV",
-    description:
-      "Electrical Engineering student at Universitas Gadjah Mada exploring IoT, AI, and technology for sustainable innovation.",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/og.png"],
   },
 };

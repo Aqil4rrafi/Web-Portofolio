@@ -3,6 +3,8 @@ export type SocialLink = {
   url: string;
 };
 
+export const WEBSITE_URL = "https://www.kresnarrafi.my.id/";
+
 export type ResumeEntry = {
   id: string;
   title: string;
@@ -95,7 +97,7 @@ export const portfolio = {
     residence: "Darmaputra Santren UGM Residence",
     phone: "0887433061958",
     email: "arrafikresna@gmail.com",
-    website: "https://aqilakresnaarrafi.vercel.app/",
+    website: WEBSITE_URL,
     availability: "IoT & AI Enthusiast",
     image: "/Aqila.jpeg",
     socials: [
@@ -103,7 +105,7 @@ export const portfolio = {
         label: "LinkedIn",
         url: "https://www.linkedin.com/in/aqila-kresna-arrafi-75344933b",
       },
-      { label: "Website", url: "https://aqilakresnaarrafi.vercel.app/" },
+      { label: "Website", url: WEBSITE_URL },
     ] satisfies SocialLink[],
   },
   about: {
